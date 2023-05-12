@@ -31,10 +31,13 @@ library(zoo)
 library(hrbrthemes)
 library(car)
 library(lm.beta)
+library(dotwhisker)
   
 ##LOAD IN RAW DATAFILES## 
-#this includes DeepSolar, Tracking the Sun, and Project Sunroof at the Tract-level#
-
+#DeepSolar and Project Sunroof at the Tract-level#
+##read in tract-level files.  These can be downloaded via the README document in this repository. 
+deepsolar_tract <- read.csv("~/Documents/deepsolar_tract.csv")
+sunroof_tract <- read.csv("~/Documents/project-sunroof-census_tract.csv")
 
 ###############################################
 ##STEP ONE: GENERATE ACS DATA FROM TIDYCENSUS##
@@ -116,11 +119,7 @@ final_tract <- trdat_15
 ##STEP TWO: PREPARE THE SOLAR INSTALLATION DATA##
 #################################################
 
-##read in tract-level files **update file paths
-deepsolar_tract <- read.csv("~/Documents/School/MIT/research/thesis/rwork/deepsolar/deepsolar_tract.csv")
-sunroof_tract <- read.csv("~/Documents/School/MIT/research/thesis/rwork/sunroof/project-sunroof-census_tract.csv")
-
-##create extracts
+##create extracts of solar data
 deepsolar_extract <- deepsolar_tract[, c(5,70,75,99,159:169)]
 sunroof_extract <- sunroof_tract[, c(1, 31)]
 
